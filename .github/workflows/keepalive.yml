@@ -1,0 +1,28 @@
+name: Keep Alive Supabase & Vercel Endpoint
+
+on:
+  schedule:
+    # Run every 2 days at midnight UTC to prevent free-tier project auto-pausing
+    - cron: '0 0 */2 * *'
+  workflow_dispatch: # Allow manual trigger from GitHub Actions tab
+
+jobs:
+  ping-health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Live /api/health Endpoint
+        run: |
+          APP_URL="${{ secrets.DEPLOYED_APP_URL || 'https://nxtwave-squad-race.vercel.app' }}"
+          echo "Pinging health endpoint at: $APP_URL/api/health"
+          RESPONSE=$(curl -s -w "\n%{http_code}" "$APP_URL/api/health")
+          HTTP_BODY=$(echo "$RESPONSE" | sed '$d')
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          
+          echo "HTTP Response Status: $HTTP_CODE"
+          echo "Payload: $HTTP_BODY"
+          
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "Health check failed with status $HTTP_CODE"
+            exit 1
+          fi
+          echo "Database and server health verified successfully."
