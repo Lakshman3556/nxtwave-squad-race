@@ -19,7 +19,7 @@
 ### Field 2: Working Asset Link
 - **Format:** Short answer / URL
 - **Asset Built:** **Squad Race: Collegiate Referral Engine & Growth Dashboard**
-- **Public URL:** Provide the deployed Vercel URL (e.g. `https://nxtwave-squad-race.vercel.app`)
+- **Public URL:** `https://nxtwave-squad-race.vercel.app`
 - **Key Routes Reviewers Can Inspect:**
   - Landing & 20-sec Registration: `/`
   - Personalized Squad Share Card: `/s/DEMO01` (or register on home page to generate your own)
@@ -59,7 +59,7 @@ Metric: Registrations per 100 students reached by sender type. Reallocate remain
 - **Format:** Short answer / URL
 - **File Location:** `docs/AI_WORKLOG.md`
 - **Candidate Action:**
-  1. Once pushed to GitHub, copy the rendered GitHub URL to `docs/AI_WORKLOG.md` (or import to a public Google Doc).
+  1. Direct GitHub URL: `https://github.com/Lakshman3556/nxtwave-squad-race/blob/main/docs/AI_WORKLOG.md`
   2. Verify that the link opens properly in an incognito window without login.
   3. Paste the URL into Field 4.
 
